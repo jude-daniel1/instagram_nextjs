@@ -1,5 +1,10 @@
 import React from "react";
-import { DotsHorizontalIcon } from "@heroicons/react/solid";
+import {
+  DotsHorizontalIcon,
+  HeartIcon,
+  ChatIcon,
+  BookmarkIcon,
+} from "@heroicons/react/outline";
 
 export default function Post({ id, username, userImg, img, caption }) {
   return (
@@ -17,6 +22,16 @@ export default function Post({ id, username, userImg, img, caption }) {
 
       {/* Post Image */}
       <img src={img} alt={caption} className="w-full object-cover" />
+
+      {/* Post Buttons */}
+
+      <div className="flex justify-between px-4 pt-4">
+        <div className="flex space-x-4">
+          <HeartIcon className="btn" />
+          <ChatIcon className="btn" />
+        </div>
+        <BookmarkIcon className="btn" />
+      </div>
     </div>
   );
 }
