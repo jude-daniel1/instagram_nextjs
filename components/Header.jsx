@@ -3,10 +3,11 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { SearchIcon, PlusCircleIcon } from "@heroicons/react/outline";
 import { HomeIcon } from "@heroicons/react/solid";
-import profile from "../static/profile.jpg";
+import { useSession, signIn, signOut } from "next-auth/react";
 
 export default function Header() {
   const router = useRouter();
+  const { data: session } = useSession();
   return (
     <div className="shadow-sm sticky border-b top-0 bg-white z-30">
       <div className="flex items-center justify-between max-w-6xl px-4 mx-auto">
@@ -40,14 +41,19 @@ export default function Header() {
         {/* Profle Icons */}
         <div className="flex items-center cursor-pointer gap-x-3">
           <HomeIcon className="hidden md:inline-flex   h-6 cursor-pointer hover:scale-125 transition-transform ease-in-out duration-200" />
-          <PlusCircleIcon className="h-6 cursor-pointer hover:scale-125 transition-transform ease-in-out duration-200" />
-
-          <Image
-            src={profile}
-            width={50}
-            height={50}
-            className="rounded-full object-contain"
-          />
+          {session ? (
+            <>
+              <PlusCircleIcon className="h-6 cursor-pointer hover:scale-125 transition-transform ease-in-out duration-200" />
+              <img
+                onClick={signOut}
+                src={session.user.image}
+                alt="user image"
+                className="h-10 rounded-full cursor-pointer"
+              />
+            </>
+          ) : (
+            <button onClick={signIn}>Sign in</button>
+          )}
         </div>
       </div>
     </div>
