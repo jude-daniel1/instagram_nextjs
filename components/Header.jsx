@@ -40,7 +40,7 @@ export default function Header() {
         </div>
         {/* Profle Icons */}
         <div className="flex items-center cursor-pointer gap-x-3">
-          <HomeIcon className="hidden md:inline-flex   h-6 cursor-pointer hover:scale-125 transition-transform ease-in-out duration-200" />
+          <HomeIcon className="hidden md:inline-flex h-6 cursor-pointer hover:scale-125 transition-transform ease-in-out duration-200" />
           {session ? (
             <>
               <PlusCircleIcon className="h-6 cursor-pointer hover:scale-125 transition-transform ease-in-out duration-200" />
