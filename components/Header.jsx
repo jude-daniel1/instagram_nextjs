@@ -18,12 +18,14 @@ export default function Header() {
           <Image
             src="http://www.jennexplores.com/wp-content/uploads/2015/09/Instagram_logo_black.png"
             layout="fill"
+            alt=""
             className="object-contain"
             onClick={() => router.push("/")}
           />
         </div>
         <div className="cursor-pointer h-24 w-10 relative  lg:hidden ">
           <Image
+            alt=""
             src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/800px-Instagram_logo_2016.svg.png"
             layout="fill"
             className="object-contain"
@@ -52,7 +54,7 @@ export default function Header() {
               />
               <img
                 onClick={signOut}
-                src={session.user.image}
+                src={session?.user?.image}
                 alt="user image"
                 className="h-10 rounded-full cursor-pointer"
               />
